@@ -1,0 +1,31 @@
+.radios {
+	.flexrow();
+	.flexcenter();
+
+	.radio {
+		padding: 3px 10px;
+		border-radius: 50px;
+		margin: 10px;
+		.pointer();
+
+		span.far {
+			margin-right: 4px;
+		}
+
+		&.active {
+			background: @green;
+		}
+		&.creative-coding { background: @creative-coding; }
+		&.digital-music { background: @digital-music; }
+		&.freelancing { background: @freelancing; }
+		&.web-development { background: @web-development; }
+		&.anything-creative { background: @anything; }
+
+		&.disabled {
+			cursor: default;
+			background: @grey-30;
+			color: @grey-50;
+		}
+
+	}
+}

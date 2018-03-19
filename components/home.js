@@ -10,7 +10,15 @@ var HomeComponent = {
                 'web-development',
                 'anything-creative'
             ],
-            activeThemeIndex: 0
+            activeThemeIndex: 0,
+            travelOptions: [
+                { text: 'On foot', value: 'foot' },
+                { text: 'Bike or equivalent', value: 'bike' },
+                { text: 'Public transport', value: 'public' }
+            ],
+            travelOption: 'foot',
+            availableTime: 90,
+            latestHour: 120
         }
     },
     methods: {
@@ -59,11 +67,11 @@ var HomeComponent = {
             ctx.clearRect(0, 0, width, height);
             for (var j = 0; j < particles.length; j++) {
                 var p = particles[j];
-                var k = 0.002, noise = 0.5;
+                var k = 0.002, noise = 0.5, visc = 0.2;
                 var xAcc = noise * (-0.5 + Math.random()) - k * (p.x - xC),
                     yAcc = noise * (-0.5 + Math.random()) - k * (p.y - yC);
-                p.xSpeed += xAcc;
-                p.ySpeed += yAcc;
+                p.xSpeed += xAcc * (1 - visc);
+                p.ySpeed += yAcc * (1 - visc);
                 p.x += 0.1 * p.xSpeed;
                 p.y += 0.1 * p.ySpeed;
 
@@ -82,5 +90,13 @@ var HomeComponent = {
         };
         frame();
 
+    },
+    filters: {
+        latestHourAfterNoon: function(value) {
+            if (!value) return '';
+            var minutes = Number(value) - 60;
+            return '1pm and ' + minutes + ' minutes';
+
+        }
     }
 };

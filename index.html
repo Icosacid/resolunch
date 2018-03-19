@@ -68,8 +68,9 @@
 <!-- View templates -->
 <template id="home-template">
 	<div id="home">
+		<!-- Theme radios -->
 		<div class="theme-selection">
-			<p class="theme-intro">Today I would like to lunch about:</p>
+			<p class="theme-intro">What would like to lunch about today?</p>
 			<div class="radios">
 				<p class="radio"
 				   v-on:click="changeActiveTheme(index)"
@@ -80,9 +81,75 @@
 			</div>
 		</div>
 
+		<!-- Le map -->
 		<div class="map">
-			<reso-map></reso-map>
+			<reso-map v-bind:style="'box-shadow: hsla(' +  resoHue + ', 60%, 50%, 0.9) 0 0 20px;'"></reso-map>
 		</div>
+		<p class="question">Where would you rather have your lunch?</p>
+
+		<div class="options">
+
+			<div class="available-time">
+				<p class="question">Up to how much lunch time can you have?</p>
+				<div class="range-with-captions">
+					<input type="number" value="90" min="40" max="120" step="5" v-model="availableTime"/>
+					<p>minutes</p>
+				</div>
+			</div>
+
+			<div class="latest-hour">
+				<p class="question">When is the latest you can get back to what you were doing (e.g. working)?</p>
+				<div class="range-with-captions">
+					<p>1pm</p>
+					<!-- Hours after noon -->
+					<input type="range" value="120" min="60" max="180" step="5" v-model="latestHour"/>
+					<p>3pm</p>
+				</div>
+				<div class="range-input-result">
+					<p>{{ latestHour | latestHourAfterNoon }}</p>
+				</div>
+			</div>
+
+			<div class="travelling-option">
+				<p class="question">You are travelling</p>
+				<select class="travel" v-model="travelOption">
+					<option v-for="option in travelOptions" v-bind:value="option.value">
+						{{ option.text }}
+					</option>
+				</select>
+			</div>
+
+			<!-- Notification preferences -->
+			<div class="notify">
+				<p class="question">How can we notify you when we find your lunch?</p>
+				<div class="radios">
+					<p class="radio active"><span class="far fa-dot-circle"></span> email</p>
+					<p class="radio disabled"><span class="far fa-circle"></span> text message</p>
+					<p class="radio disabled"><span class="far fa-circle"></span> push notification</p>
+				</div>
+				<div class="chosen">
+					<label for="notify-email">Your email: </label><input id="notify-email" type="email" />
+				</div>
+				<!-- Privacy note -->
+				<p class="privacy-note">
+					<br/>
+					Note: Resolunch is all about privacy, we will never share your personal data.
+					<br/>
+					More about <a class="underline" href="#">absolute privacy on Resolunch</a>
+					<br/>
+				</p>
+			</div>
+		</div>
+
+
+		<!-- Submit -->
+		<div class="submit">
+			<button class="reso-btn">Find me a lunch</button>
+		</div>
+
+		<!-- Additional note -->
+		<p class="additional-note">Once you recieve a lunch opportunity, you will have until 10am the following day to confirm or cancel your venue.</p>
+
 	</div>
 </template>
 

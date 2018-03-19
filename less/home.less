@@ -1,44 +1,79 @@
 #home {
 	.theme-selection {
-		padding: 50px;
+		padding: 50px 50px 20px;
 		p.theme-intro {
 			font-size: 1.5rem;
 			margin: 15px;
 			.center();
 		}
-		.radios {
-			.flexrow();
-			.flexcenter();
+		.radios { }
+	}
 
-			.radio {
-				padding: 3px 10px;
-				border-radius: 50px;
-				margin: 10px;
-				.pointer();
+	.map {
+		.flexrow();
 
-				span.far {
-					margin-right: 4px;
-				}
+		#reso-map {
+			height: 400px;
+			width: 900px;
+			border-radius: 2px;
 
-				&.creative-coding { background: @creative-coding; }
-				&.digital-music { background: @digital-music; }
-				&.freelancing { background: @freelancing; }
-				&.web-development { background: @web-development; }
-				&.anything-creative { background: @anything; }
-
-				&.active {
-
-				}
-
+			& > div {
+				filter: saturate(10%);
 			}
 		}
 	}
 
-	.map {
+	.options {
 		.center();
-		#reso-map {
-			height: 400px;
-			width: 900px;
+		p.question {
+			font-size: 1.5rem;
+		}
+
+		.available-time,
+		.latest-hour,
+		.travelling-option,
+		.notify {
+			margin: 40px;
+		}
+
+		.available-time,
+		.latest-hour {
+			.range-with-captions {
+				.flexrow();
+				.flexcenter();
+
+				p {
+					margin: 5px;
+				}
+			}
+		}
+		.travelling-option {
+
+		}
+		.notify {
+			.radios { }
+			.chosen {
+				input.notify-email {
+
+				}
+			}
+			p.privacy-note {
+				color: @grey-50;
+			}
 		}
 	}
+
+	.submit {
+		.flexrow();
+		margin: 20px;
+	}
+
+	p.additional-note {
+		.center();
+		color: @grey-50;
+		width: 30%;
+		font-size: 0.9rem;
+		margin: auto auto 50px;
+	}
+
 }
