@@ -71,7 +71,7 @@
 		<div class="theme-selection">
 			<p class="theme-intro">Today I would like to lunch about:</p>
 			<div class="radios">
-				<p class="radio {{ theme }}"
+				<p class="radio"
 				   v-on:click="changeActiveTheme(index)"
 				   v-for="(theme, index) in themes"
 				   :class="[index === activeThemeIndex ? 'active' : '', theme]">
@@ -79,6 +79,16 @@
 				</p>
 			</div>
 		</div>
+
+		<div class="map">
+			<reso-map></reso-map>
+		</div>
+	</div>
+</template>
+
+<template id="reso-map-template">
+	<div id="reso-map">
+
 	</div>
 </template>
 
@@ -96,9 +106,21 @@
 <script type='text/javascript' src="node_modules/vue-router/dist/vue-router.min.js"></script>
 <script type='text/javascript' src="node_modules/jquery/dist/jquery.min.js"></script>
 
+<!-- Gmaps -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUD_84n9vBr5CM0RGokCgft6KYqY0OwHs&callback=globalMapInit"
+		async defer></script>
+
+
 <!-- Ours -->
 <script type='text/javascript' src="js/utils.js"></script>
 <script type='text/javascript' src="js/jAntispam.js"></script>
+<!-- Components, then main -->
+<script type="text/javascript">
+    // Create bus to manage events between components
+    var bus = new Vue({});
+</script>
+<script type='text/javascript' src="components/home.js"></script>
+<script type='text/javascript' src="components/map.js"></script>
 <script type='text/javascript' src="js/main.js"></script>
 
 </body>
