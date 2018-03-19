@@ -1,0 +1,44 @@
+.header {
+	.flexrow();
+	.flexbetween();
+	padding: 20px 60px;
+	background: @grey-15;
+
+	.central {
+		.flexrow();
+		.logo {
+			.resologo {
+				position: relative;
+
+				.hexagon .content {
+					background: @black;
+					filter: blur(20px) contrast(3);
+				}
+				.border {
+					position: absolute;
+					top: -11px;
+					left: -22px;
+					width: 160px;
+				}
+			}
+		}
+		.intro {
+			margin-left: 50px;
+			h1 {
+				font-size: 3rem;
+			}
+			p.subtitle,
+			p.subtitle-2 {
+
+			}
+		}
+	}
+	.actions {
+		p {
+			text-decoration: underline;
+		}
+	}
+}
+.menu {
+
+}

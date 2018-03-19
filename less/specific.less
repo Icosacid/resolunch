@@ -1,0 +1,40 @@
+@2ssqrt3: 1.1547;
+.hexagon {
+	/* Inspired by ClemArt's work on hexagons */
+	/* View on CodePen at http://codepen.io/ClemArt/pen/xGoyPK */
+	width: 120px;
+	height: @2ssqrt3 * 120px;
+	position: relative;
+	overflow: hidden;
+	margin: auto;
+	.hex1 {
+		width: 100%;
+		height: 100%;
+		transform: rotate(60deg);
+		position: absolute;
+		top: 0;
+		left: 0;
+		overflow: hidden;
+	}
+	.hex2 {
+		width: 100%;
+		height: 100%;
+		transform: rotate(60deg);
+		position: absolute;
+		top: 0;
+		left: 0;
+		overflow: hidden;
+	}
+	.content {
+		background-size: cover;
+		background-position: center;
+		width: @2ssqrt3 * 100%;
+		height: 100%;
+		transform: rotate(-120deg);
+		position: absolute;
+		left: -7.5%;
+	}
+}
+#ie-fallback {
+	display: none;
+}

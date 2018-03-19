@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset='utf-8'/>
+	<title>Resolunch</title>
+
+	<!-- Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
+	
+	<!-- Stylesheets -->
+	<link rel='stylesheet' type='text/less' href="less/main.less" />
+	<link rel='stylesheet' type='text/css' href="css/ie-fallback.css" />
+
+	<!-- Only script in header: less on-the-fly compiler -->
+	<script type='text/javascript' src="node_modules/less/dist/less.min.js"></script>
+	
+</head>
+<body>
+
+<div id="resolunch-web">
+	<!-- Top header -->
+	<div class="header">
+		<div class="central">
+			<div class="logo">
+				<div class="resologo" v-bind:style="'filter: hue-rotate(' +  mainHue + 'deg);'">
+					<div class="hexagon">
+						<div class="hex1">
+							<div class="hex2">
+								<div class="content">
+
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="border">
+						<img src="img/website/resologo.svg" />
+					</div>
+				</div>
+			</div>
+			<div class="intro">
+				<h1>Resolunch</h1>
+				<p class="subtitle">Incredible lunches with creative people</p>
+				<p class="subtitle-2">A free and anonymous platform</p>
+			</div>
+
+		</div>
+		<div class="actions">
+			<p>Login</p>
+		</div>
+	</div>
+
+	<!-- Menu -->
+	<div class="menu">
+
+	</div>
+
+	<div class="core">
+		<router-view></router-view>
+	</div>
+
+	<div class="footer">
+		<p class="click-and-hue">Resolunch</p>
+		<p class="version">@2018</p>
+	</div>
+</div>
+
+<!-- View templates -->
+<template id="home-template">
+	<div id="home">
+		<div class="theme-selection">
+			<p class="theme-intro">Today I would like to lunch about:</p>
+			<div class="radios">
+				<p class="radio {{ theme }}"
+				   v-on:click="changeActiveTheme(index)"
+				   v-for="(theme, index) in themes"
+				   :class="[index === activeThemeIndex ? 'active' : '', theme]">
+					<span class="far" :class="[index === activeThemeIndex ? 'fa-dot-circle' : 'fa-circle']"></span> {{ themes[index].replace('-', ' ') }}
+				</p>
+			</div>
+		</div>
+	</div>
+</template>
+
+<!-- IE fallback -->
+<div id="ie-fallback">
+	<img width="150" height="150" src='img/website/triangorot.svg' />
+	<p>This website works best on modern browsers.<br/>Please don't use Internet Explorer and download <a href="https://www.mozilla.org/fr/firefox/new/" target="_blank">Mozilla Firefox</a>.</p>
+
+	<p>Thanks!</p>
+</div>
+
+<!-- Libs -->
+<script type='text/javascript' src="node_modules/vue/dist/vue.min.js"></script>
+<!--<script type='text/javascript' src="node_modules/vue/dist/vue.js"></script>-->
+<script type='text/javascript' src="node_modules/vue-router/dist/vue-router.min.js"></script>
+<script type='text/javascript' src="node_modules/jquery/dist/jquery.min.js"></script>
+
+<!-- Ours -->
+<script type='text/javascript' src="js/utils.js"></script>
+<script type='text/javascript' src="js/jAntispam.js"></script>
+<script type='text/javascript' src="js/main.js"></script>
+
+</body>
+</html>

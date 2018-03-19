@@ -1,0 +1,36 @@
+#home {
+	.theme-selection {
+		padding: 50px;
+		p.theme-intro {
+			font-size: 1.5rem;
+			margin: 15px;
+			.center();
+		}
+		.radios {
+			.flexrow();
+			.flexcenter();
+
+			.radio {
+				padding: 3px 10px;
+				border-radius: 50px;
+				margin: 10px;
+				.pointer();
+
+				span.far {
+					margin-right: 4px;
+				}
+
+				&.creative-coding { background: @creative-coding; }
+				&.digital-music { background: @digital-music; }
+				&.freelancing { background: @freelancing; }
+				&.web-development { background: @web-development; }
+				&.anything-creative { background: @anything; }
+
+				&.active {
+
+				}
+
+			}
+		}
+	}
+}
