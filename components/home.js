@@ -40,6 +40,14 @@ var HomeComponent = {
         }
     },
     mounted: function() {
+        // Testing ajax service
+        signupService.sendLunchRequest('rien').then(
+            function(data) {
+                console.log('data is ', data);
+            }
+        );
+
+
         var self = this;
         var canvas = document.createElement('canvas');
         var $hex = jQuery('.resologo .hexagon .content'),
