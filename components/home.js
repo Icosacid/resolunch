@@ -17,7 +17,7 @@ var HomeComponent = {
                 { text: 'Public transport', value: 'public' }
             ],
             travelOption: 'foot',
-            availableTime: 90,
+            availableTimes: [],
             latestHour: 120
         }
     },
@@ -97,6 +97,11 @@ var HomeComponent = {
             requestAnimationFrame(frame);
         };
         frame();
+
+        // Create available times and fill the array
+        for (var times = 40; times <= 120; times += 5) {
+          this.availableTimes.push({ text: '' + times, value: times } );
+        }
 
     },
     filters: {
