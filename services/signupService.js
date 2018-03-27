@@ -1,13 +1,17 @@
 var backend = 'http://localhost:3000';
 
 var signupService = {
-    sendLunchRequest: function(form) {
+    sendLunchRequest: function(lunch) {
         return $.post(backend + '/lunch-request', {
-            email: 'bell@ring.ing',
-            themeID: 0,
-            travelOptionID: 0,
-            availableTime: 0,
-            latestHour: 50
+            email: lunch.email,
+            themeID: lunch.themeID,
+            position: {
+                lat: lunch.position.lat,
+                lng: lunch.position.lng
+            },
+            travelOptionID: lunch.travelOptionID,
+            availableTime: lunch.availableTime,
+            latestHour: lunch.latestHour
         });
     }
 };

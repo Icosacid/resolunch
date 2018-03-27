@@ -16,9 +16,11 @@ var HomeComponent = {
                 { text: 'Bike or equivalent', value: 'bike' },
                 { text: 'Public transport', value: 'public' }
             ],
-            travelOption: 'foot',
             availableTimes: [],
-            latestHour: 120
+            availableTime: 90,
+            latestHour: 120,
+            travelOption: 'foot',
+            email: undefined
         }
     },
     methods: {
@@ -37,17 +39,28 @@ var HomeComponent = {
                 case 4: newHue = 290; break;
             }
             this.changeMainHue(newHue);
+        },
+        submitLunchRequest: function() {
+            console.log('Meh')
+            var lunch = {
+                themeID: 0,
+                position: {
+                    lat: 0,
+                    lng: 0
+                },
+                availableTime: 90,
+                latestHour: 120,
+                travelOptionID: 0,
+                email: 'meh@meh.meh'
+            };
+            signupService.sendLunchRequest(lunch).then(
+                function(data) {
+                    console.log('data is ', data);
+                }
+            );
         }
     },
     mounted: function() {
-        // Testing ajax service
-        signupService.sendLunchRequest('rien').then(
-            function(data) {
-                console.log('data is ', data);
-            }
-        );
-
-
         var self = this;
         var canvas = document.createElement('canvas');
         var $hex = jQuery('.resologo .hexagon .content'),
