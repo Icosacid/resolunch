@@ -107,9 +107,14 @@ var HomeComponent = {
     filters: {
         latestHourAfterNoon: function(value) {
             if (!value) return '';
+            var hour = Math.floor( Number(value) / 60 );
             var minutes = Number(value) - 60;
-            return '1pm and ' + minutes + ' minutes';
 
+            if (minutes > 60 ) {
+              minutes = Number(value) - 120;
+            }
+
+            return (minutes == 0  || minutes == 60 ? hour + 'pm' : hour + 'pm and ' + minutes + ' minutes');
         }
     }
 };
