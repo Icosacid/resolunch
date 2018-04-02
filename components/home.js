@@ -41,23 +41,32 @@ var HomeComponent = {
             this.changeMainHue(newHue);
         },
         submitLunchRequest: function() {
-            console.log('Meh')
+
             var lunch = {
-                themeID: 0,
+                themeID: this.activeThemeIndex,
                 position: {
                     lat: 0,
                     lng: 0
                 },
-                availableTime: 90,
-                latestHour: 120,
-                travelOptionID: 0,
-                email: 'meh@meh.meh'
+                availableTime: this.availableTime,
+                latestHour: this.latestHour,
+                travelOptionID: this.travelOption,
+                email: this.email
             };
-            signupService.sendLunchRequest(lunch).then(
-                function(data) {
-                    console.log('data is ', data);
-                }
-            );
+            if( !this.isMailEmpty() ){
+              jQuery("#usrEmail").addClass("is-invalid");
+            }
+            else {
+              signupService.sendLunchRequest(lunch).then(
+                  function(data) {
+                      console.log('data is ', data);
+                  }
+              );
+            }
+        },
+        isMailEmpty: function() {
+
+          return jQuery("#usrEmail").val() == "" ? false : true;
         }
     },
     mounted: function() {
