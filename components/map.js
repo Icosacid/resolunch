@@ -7,22 +7,41 @@ Vue.component('reso-map', {
     data: function() {
         return {
             map: undefined,
-            // Creates users locations
+            markers: [],
+            // Creates users locations, backend will give this later
             userLocs: [
                         {lat: -33.865, lng: 151.209},
                         {lat: -35.542, lng: 150.305},
                         {lat: -32.777, lng: 151.402},
                         {lat: -34.666, lng: 151.802},
-            ]
+            ],
+            currentUserLoc: {}
         }
     },
     methods: {
-        addMarker: function(map, loc, index) {
+        addMarker: function(loc, isDrag, mrkType) {
             var marker = new google.maps.Marker({
                 position: loc,
-                map: map,
-                title: "User " + index + 1
+                draggable: isDrag,
+                type: mrkType
             });
+            this.markers.push(marker);
+        },
+        hideMarkers: function (map, markers) {
+            this.drawMarkers(null);
+        },
+        removeCustomMarker: function() {
+            for (var i = 0; i < this.markers.length; i++) {
+                if(this.markers[i].type === "custom"){
+                    this.markers.splice(i, 1);
+                }
+            }
+        },
+        drawMarkers: function(map) {
+
+            for (var i = 0; i < this.markers.length; i++) {
+                this.markers[i].setMap(map);
+            }
         }
     },
     mounted: function() {
@@ -35,16 +54,22 @@ Vue.component('reso-map', {
                 zoom: 6
             });
 
-            // Draw each location markers on map if there's
-            self.userLocs.forEach(function(userLoc, index) {
-                self.addMarker(self.map, userLoc, index);
+            // Create each location markers
+            self.userLocs.forEach(function(userLoc) {
+                // Add markers in array and draw them
+                self.addMarker(userLoc, false, "fix");
+                self.drawMarkers(self.map);
             });
 
             self.map.addListener('click', function(e) {
-                // We push the new user location into the array
-                self.userLocs.push( e.latLng.toJSON() );
-                // And draw it on map
-                self.addMarker(self.map, e.latLng.toJSON());
+                self.hideMarkers();
+                self.removeCustomMarker();
+                // Set the current user location
+                self.currentUserLoc = e.latLng.toJSON();
+                // Add new custom marker
+                self.addMarker(e.latLng.toJSON(), true, "custom");
+                // Draw fix markers and add the new custom one
+                self.drawMarkers(self.map);
             });
 
         })
