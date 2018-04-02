@@ -40,7 +40,7 @@
 			</div>
 			<div class="intro">
 				<h1>Resolunch</h1>
-				<p class="subtitle">Incredible lunches with creative people</p>
+				<p class="subtitle">Bringing creatives together over lunch</p>
 				<p class="subtitle-2">A free and anonymous platform</p>
 			</div>
 
@@ -69,7 +69,6 @@
 <!-- View templates -->
 <template id="home-template">
 	<div id="home">
-
 		<!-- Theme radios -->
 		<div class="theme-selection">
 			<p class="theme-intro">What would like to lunch about today?</p>
@@ -90,93 +89,130 @@
 				<reso-map v-bind:style="'box-shadow: hsla(' +  resoHue + ', 60%, 50%, 0.9) 0 0 20px;'"></reso-map>
 			</div>
 
-				<div class="row justify-content-md-center">
-					<div class="available-time col-md-8">
-						<p class="question">Up to how much lunch time can you have?</p>
-						<div class="range-with-captions">
+            <div class="row justify-content-md-center">
+                <div class="available-time col-md-8">
+                    <p class="question">Up to how much lunch time can you have?</p>
+                    <div class="range-with-captions">
 
-							<select class="form-control col-md-3" v-model="availableTime">
-								<option v-for="times in availableTimes" v-bind:value="times.value">
-									{{ times.text }}
-								</option>
+                        <select class="form-control col-md-3" v-model="availableTime">
+                            <option v-for="times in availableTimes" v-bind:value="times.value">
+                                {{ times.text }}
+                            </option>
 
-							</select>
-						</div>
-					</div>
-				</div>
-				<!-- end Row-->
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <!-- end Row-->
 
-				<div class="row justify-content-md-center">
-					<div class="latest-hour col-md-8">
-						<p class="question">When is the latest you can get back to what you were doing (e.g. working)?</p>
-						<div class="range-with-captions">
-							<p>1pm</p>
-							<!-- Hours after noon -->
-							<input type="range" value="120" min="60" max="180" step="5" v-model="latestHour"/>
-							<p>3pm</p>
-						</div>
-						<div class="range-input-result">
-							<p>{{ latestHour | latestHourAfterNoon }}</p>
-						</div>
-					</div>
-				</div>
-				<!-- end Row -->
+            <div class="row justify-content-md-center">
+                <div class="latest-hour col-md-8">
+                    <p class="question">When is the latest you can get back to what you were doing (e.g. working)?</p>
+                    <div class="range-with-captions">
+                        <p>1pm</p>
+                        <!-- Hours after noon -->
+                        <input type="range" value="120" min="60" max="180" step="5" v-model="latestHour"/>
+                        <p>3pm</p>
+                    </div>
+                    <div class="range-input-result">
+                        <p>{{ latestHour | latestHourAfterNoon }}</p>
+                    </div>
+                </div>
+            </div>
+            <!-- end Row -->
 
-				<div class="row justify-content-md-center">
-					<div class="travelling-option">
-						<p class="question">You are travelling</p>
+            <div class="row justify-content-md-center">
+                <div class="travelling-option">
+                    <p class="question">You are travelling</p>
 
-						<select class="form-control">
-							<option v-for="option in travelOptions" v-bind:value="option.value">
-								{{ option.text }}
-							</option>
-						</select>
-					</div>
-				</div>
-				<!-- end row -->
+                    <select class="form-control">
+                        <option v-for="option in travelOptions" v-bind:value="option.value">
+                            {{ option.text }}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <!-- end row -->
 
-				<!-- Notification preferences -->
-				<div class="row justify-content-md-center">
-					<div class="notify">
-						<p class="question">How can we notify you when we find your lunch?</p>
-						<div class="radios">
-							<p class="radio active"><span class="far fa-dot-circle"></span> email</p>
-							<p class="radio disabled"><span class="far fa-circle"></span> text message</p>
-							<p class="radio disabled"><span class="far fa-circle"></span> push notification</p>
-						</div>
-						<div class="chosen">
-							<label for="notify-email">Your email: </label>
-							<input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter email" v-model="email">
-						</div>
-						<!-- Privacy note -->
-						<p class="privacy-note">
-							<br/>
-							Note: Resolunch is all about privacy, we will never share your personal data.
-							<br/>
-							More about <a class="underline" href="#">absolute privacy on Resolunch</a>
-							<br/>
-						</p>
-					</div>
-				</div>
-				<!-- end row -->
+            <!-- Notification preferences -->
+            <div class="row justify-content-md-center">
+                <div class="notify">
+                    <p class="question">How can we notify you when we find your lunch?</p>
+                    <div class="radios">
+                        <p class="radio active"><span class="far fa-dot-circle"></span> email</p>
+                        <p class="radio disabled"><span class="far fa-circle"></span> text message</p>
+                        <p class="radio disabled"><span class="far fa-circle"></span> push notification</p>
+                    </div>
+                    <div class="chosen">
+                        <label for="notify-email">Your email: </label>
+                        <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter email" v-model="email">
+                    </div>
+                    <!-- Privacy note -->
+                    <p class="privacy-note">
+                        <br/>
+                        Note: Resolunch is all about privacy, we will never share your personal data.
+                        <br/>
+                        More about <a class="underline" href="#">absolute privacy on Resolunch</a>
+                        <br/>
+                    </p>
+                </div>
+            </div>
+            <!-- end row -->
 
-				<!-- Submit -->
-				<div class="submit">
-					<button class="btn btn-primary" v-on:click="submitLunchRequest()">Submit</button>
-				</div>
+            <!-- Submit -->
+            <div class="submit">
+                <button class="btn btn-primary" v-on:click="submitLunchRequest()">Submit</button>
+            </div>
 
-				<!-- Additional note -->
-				<p class="additional-note">Once you recieve a lunch opportunity, you will have until 10am the following day to confirm or cancel your venue.</p>
-			</div>
+            <!-- Additional note -->
+            <p class="additional-note">Once you recieve a lunch opportunity, you will have until 10am the following day to confirm or cancel your venue.</p>
 			<!-- end container -->
 		</div>
 		<!-- end home -->
+
+    </div>
+
+</template>
+
+<template id="match-template">
+    <div id="match">
+        <h4>We found you a creative lunch!</h4>
+
+        <div class="match-snippet">
+            <reso-map></reso-map>
+            <div class="snippet-footer">
+                <div class="place-pic">
+                    <img src="img/places/resto.jpg" title="Bruyère Fougasses" alt="Bruyère Fougasses"/>
+                </div>
+                <div class="place-info">
+                    <p class="place-title">Bruyère Fougasses</p>
+                    <p class="place-description">Lorem ipsum dolor sit amet consectetur adipiscing elit, lorem ipsum dolor sit amet...</p>
+                </div>
+                <div class="timing-info">
+                    <p class="time">12:31</p>
+                    <p class="duration">~50min</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="status-bar">
+            <p><span class="far fa-clock"></span>The other person has not confirmed yet</p>
+        </div>
+
+        <div class="meeting-details">
+            <p>How can the other resoluncher recognize you?</p>
+            <textarea placeholder="e.g. I wear blue pants and a black hat"></textarea>
+        </div>
+
+        <div class="ctas">
+            <button class="cancel">Cancel</button>
+            <button class="confirm">Confirm</button>
+        </div>
+    </div>
 </template>
 
 <template id="reso-map-template">
-	<div id="reso-map">
-
-	</div>
+    <div id="reso-map"></div>
 </template>
 
 <!-- IE fallback -->
@@ -208,6 +244,7 @@
 </script>
 <script type='text/javascript' src="services/signupService.js"></script>
 <script type='text/javascript' src="components/home.js"></script>
+<script type='text/javascript' src="components/match.js"></script>
 <script type='text/javascript' src="components/map.js"></script>
 <script type='text/javascript' src="js/main.js"></script>
 

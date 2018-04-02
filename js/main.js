@@ -12,7 +12,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // App routes
     var routes = [
-        { path: '/', component: HomeComponent }
+        { path: '/', component: HomeComponent },
+        { path: '/match/:token', component: MatchComponent }
     ];
 
     // Build router
