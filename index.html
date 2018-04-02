@@ -176,18 +176,46 @@
 
 <template id="match-template">
     <div id="match">
-        <p>Match</p>
-        <p>{{ $route.params.token }}</p>
+        <h4>We found you a creative lunch!</h4>
+
+        <div class="match-snippet">
+            <reso-map></reso-map>
+            <div class="snippet-footer">
+                <div class="place-pic">
+                    <img src="img/places/resto.jpg" title="Bruyère Fougasses" alt="Bruyère Fougasses"/>
+                </div>
+                <div class="place-info">
+                    <p class="place-title">Bruyère Fougasses</p>
+                    <p class="place-description">Lorem ipsum dolor sit amet consectetur adipiscing elit, lorem ipsum dolor sit amet...</p>
+                </div>
+                <div class="timing-info">
+                    <p class="time">12:31</p>
+                    <p class="duration">~50min</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="status-bar">
+            <p><span class="far fa-clock"></span>The other person has not confirmed yet</p>
+        </div>
+
+        <div class="meeting-details">
+            <p>How can the other resoluncher recognize you?</p>
+            <textarea placeholder="e.g. I wear blue pants and a black hat"></textarea>
+        </div>
+
+        <div class="ctas">
+            <button class="cancel">Cancel</button>
+            <button class="confirm">Confirm</button>
+        </div>
     </div>
 </template>
 
 <template id="reso-map-template">
-	<div id="reso-map">
-
+    <div id="reso-map"></div>
 </template>
 
 <!-- IE fallback -->
-</div>
 <div id="ie-fallback">
 	<img width="150" height="150" src='img/website/triangorot.svg' />
 	<p>This website works best on modern browsers.<br/>Please don't use Internet Explorer and download <a href="https://www.mozilla.org/fr/firefox/new/" target="_blank">Mozilla Firefox</a>.</p>
