@@ -147,7 +147,7 @@
 							</div>
 							<div class="chosen">
 								<label for="notify-email">Your email: </label>
-								<input id="usrEmail" type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter email" v-model="email">
+								<input  @focus="$event.target.select()" id="usrEmail" type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter email" v-model="email">
 							</div>
 							<!-- Privacy note -->
 							<p class="privacy-note">

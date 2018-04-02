@@ -54,7 +54,7 @@ var HomeComponent = {
                 email: this.email
             };
             if( !this.isMailEmpty() ){
-              console.log("mail empty");
+              jQuery("#usrEmail").addClass("is-invalid");
             }
             else {
               signupService.sendLunchRequest(lunch).then(
