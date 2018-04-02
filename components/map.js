@@ -7,6 +7,7 @@ Vue.component('reso-map', {
     data: function() {
         return {
             map: undefined,
+            // Creates users locations
             userLocs: [
                         {lat: -33.865, lng: 151.209},
                         {lat: -35.542, lng: 150.305},
@@ -16,7 +17,13 @@ Vue.component('reso-map', {
         }
     },
     methods: {
-
+        addMarker: function(map, loc, index) {
+            var marker = new google.maps.Marker({
+                position: loc,
+                map: map,
+                title: "User " + index + 1
+            });
+        }
     },
     mounted: function() {
         console.log('Map loadede componen');
@@ -28,19 +35,18 @@ Vue.component('reso-map', {
                 zoom: 6
             });
 
+            // Draw each location markers on map if there's
             self.userLocs.forEach(function(userLoc, index) {
-                var marker = new google.maps.Marker({
-                  position: userLoc,
-                  map: self.map,
-                  title: "User " + index + 1
-                });
+                self.addMarker(self.map, userLoc, index);
+            });
+
+            self.map.addListener('click', function(e) {
+                // We push the new user location into the array
+                self.userLocs.push( e.latLng.toJSON() );
+                // And draw it on map
+                self.addMarker(self.map, e.latLng.toJSON());
             });
 
         })
-
-        // map.addListener('click', function(e) {
-        //     console.log("coucou");
-        // });
-
     }
 });
