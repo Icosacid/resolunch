@@ -82,14 +82,13 @@
 					<span class="far" :class="[index === activeThemeIndex ? 'fa-dot-circle' : 'fa-circle']"></span> {{ themes[index].replace('-', ' ') }}
 				</p>
 			</div>
-		</div>
 
-		<div class="container options">
-			<p class="question">Where would you rather have your lunch?</p>
-			<!-- Le map -->
-			<div class="map">
-				<reso-map v-bind:style="'box-shadow: hsla(' +  resoHue + ', 60%, 50%, 0.9) 0 0 20px;'"></reso-map>
-			</div>
+			<div class="container options">
+				<p class="question">Where would you rather have your lunch?</p>
+				<!-- Le map -->
+				<div class="map">
+					<reso-map v-bind:style="'box-shadow: hsla(' +  resoHue + ', 60%, 50%, 0.9) 0 0 20px;'"></reso-map>
+				</div>
 
 			<div class="row justify-content-md-center">
 				<div class="available-time col-md-8">
