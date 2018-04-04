@@ -82,7 +82,7 @@ var HomeComponent = {
         var particles = [];
 
         // Birth
-        for (var i = 0; i < 10; i++) {
+        for (var i = 0; i < 30; i++) {
             particles.push({
                 x: width * Math.random(),
                 y: width * Math.random(),
@@ -106,7 +106,7 @@ var HomeComponent = {
                 p.y += 0.1 * p.ySpeed;
 
                 ctx.beginPath();
-                ctx.arc(p.x, p.y, 50, 0, 2 * Math.PI, true);
+                ctx.arc(p.x, p.y, 20, 0, 2 * Math.PI, true);
                 ctx.fillStyle = 'hsla(' + self.resoHue + ', 70%, 50%, 0.3)';
                 ctx.fill();
                 ctx.closePath();
