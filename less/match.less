@@ -6,7 +6,7 @@
 	.match-snippet {
 		width: 904px;
 		margin: auto;
-		border: solid 2px @grey-10;
+		border: solid 1.5px @grey-40;
 		border-radius: 3px;
 
 		#reso-map {
@@ -15,12 +15,18 @@
 			border-radius: 3px 3px 0 0;
 		}
 		.snippet-footer {
-			border-top: solid 2px #000;
-			background: @color-05;
-
+			border-top: solid 1.5px #000;
+			background: @grey-20;
 			.flexrow();
 			.flexbetween();
+
+			p {
+				color: @grey-90;
+			}
+
 			.place-pic {
+				border-right: solid 1.5px @grey-40;
+
 				img {
 					height: 150px;
 				}
@@ -29,17 +35,17 @@
 				padding: 15px;
 				align-self: flex-start;
 				.place-title {
-					font-size: 1.2rem;
+					font-size: 1.3rem;
 					margin-bottom: 0;
 				}
 				.place-description { }
 			}
 			.timing-info {
 				padding: 10px 30px;
-				border-left: solid 1.5px @grey-95;
+				border-left: solid 1.5px @grey-40;
+
 				p {
 					margin: 0;
-					color: @grey-95;
 					text-shadow: currentColor 0 0 1px;
 				}
 				p.time {
@@ -56,8 +62,11 @@
 		.margin-v-10();
 		p {
 			.center();
-			span.far {
+			span.far, span.fas {
 				margin-right: 5px;
+			}
+			span.fa-check {
+				color: @green;
 			}
 		}
 	}
@@ -65,7 +74,10 @@
 		.center();
 		.margin-v-30();
 		p { font-size: 1.5rem; }
-		textarea { width: 500px; }
+		textarea {
+			width: 500px;
+			padding: 10px;
+		}
 	}
 	.ctas {
 		.margin-v-20();
