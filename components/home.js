@@ -20,7 +20,8 @@ var HomeComponent = {
             availableTime: 90,
             latestHour: 120,
             travelOption: 'foot',
-            email: undefined
+            email: undefined,
+            loading: false
         }
     },
     methods: {
@@ -41,7 +42,6 @@ var HomeComponent = {
             this.changeMainHue(newHue);
         },
         submitLunchRequest: function() {
-
             var lunch = {
                 themeID: this.activeThemeIndex,
                 position: {
@@ -53,15 +53,22 @@ var HomeComponent = {
                 travelOptionID: this.travelOption,
                 email: this.email
             };
-            if( !this.isMailEmpty() ){
-              jQuery("#usrEmail").addClass("is-invalid");
+            if (!this.isMailEmpty()){
+                jQuery("#usrEmail").addClass("is-invalid");
             }
             else {
-              signupService.sendLunchRequest(lunch).then(
-                  function(data) {
-                      console.log('data is ', data);
-                  }
-              );
+                // Add loading class to body (later move to loadingService with buffers and all)
+                this.loading = true;
+                var self = this;
+                signupService.sendLunchRequest(lunch)
+                    .done(function(data) {
+                        console.log('data is ', data);
+                    }).fail(function(jqXHR, textStatus, errorThrown) {
+                        console.log('');
+                        //console.log(jqXHR, textStatus, errorThrown);
+                    }).always(function() {
+                        self.loading = false;
+                    });
             }
         },
         isMailEmpty: function() {

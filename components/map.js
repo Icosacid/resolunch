@@ -38,7 +38,6 @@ Vue.component('reso-map', {
             }
         },
         drawMarkers: function(map) {
-
             for (var i = 0; i < this.markers.length; i++) {
                 this.markers[i].setMap(map);
             }

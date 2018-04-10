@@ -47,8 +47,10 @@
 
 		</div>
 		<div class="actions">
+			<!--
 			<button type="button" class="btn btn-outline-light">Sign In</button><br/>
 			<button type="button" class="btn btn-outline-light">Sign Up</button>
+			-->
 		</div>
 	</div>
 
@@ -69,7 +71,8 @@
 
 <!-- View templates -->
 <template id="home-template">
-	<div id="home">
+
+	<div id="home" :class="[loading ? 'loading' : '']">
 		<!-- Theme radios -->
 		<div class="theme-selection">
 			<p class="theme-intro">What would like to lunch about today?</p>
@@ -156,18 +159,16 @@
 				</div>
 			</div>
 
-
-
 			<!-- Submit -->
 			<div class="submit">
-				<button class="reso-btn green-btn" v-on:click="submitLunchRequest()">Submit</button>
+				<button class="reso-btn green-btn loader-replaced" v-on:click="submitLunchRequest()">Submit</button>
+				<resoicon class="loader fa-spin"></resoicon>
 			</div>
 
 			<!-- Additional note -->
 			<p class="additional-note">Once you recieve a lunch opportunity, you will have until 10am the following day to confirm or cancel your venue.</p>
 
 		</div>
-
 	</div>
 
 </template>
@@ -214,6 +215,12 @@
 	<div id="reso-map"></div>
 </template>
 
+<template id="resoicon-template">
+	<div class="resoicon">
+		<img src="img/website/resologo.svg" />
+	</div>
+</template>
+
 <!-- IE fallback -->
 <div id="ie-fallback">
 	<img width="150" height="150" src='img/website/triangorot.svg' />
@@ -245,6 +252,7 @@
 <script type='text/javascript' src="components/home.js"></script>
 <script type='text/javascript' src="components/match.js"></script>
 <script type='text/javascript' src="components/map.js"></script>
+<script type='text/javascript' src="components/resoicon.js"></script>
 <script type='text/javascript' src="js/main.js"></script>
 
 </body>
