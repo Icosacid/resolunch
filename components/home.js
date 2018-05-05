@@ -20,8 +20,7 @@ var HomeComponent = {
             availableTime: 90,
             latestHour: 120,
             travelOption: 'foot',
-            email: undefined,
-            loading: false
+            email: undefined
         }
     },
     methods: {
@@ -57,8 +56,6 @@ var HomeComponent = {
                 jQuery("#usrEmail").addClass("is-invalid");
             }
             else {
-                // Add loading class to body (later move to loadingService with buffers and all)
-                this.loading = true;
                 var self = this;
                 signupService.sendLunchRequest(lunch)
                     .done(function(data) {
@@ -67,12 +64,11 @@ var HomeComponent = {
                         console.log('');
                         //console.log(jqXHR, textStatus, errorThrown);
                     }).always(function() {
-                        self.loading = false;
+                        //self.loading = false;
                     });
             }
         },
         isMailEmpty: function() {
-
           return jQuery("#usrEmail").val() == "" ? false : true;
         }
     },
@@ -129,7 +125,7 @@ var HomeComponent = {
 
         // Create available times and fill the array
         for (var times = 40; times <= 120; times += 5) {
-          this.availableTimes.push({ text: '' + times, value: times } );
+          this.availableTimes.push({ text: '' + times, value: times });
         }
 
     },

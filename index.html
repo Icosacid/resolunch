@@ -59,7 +59,7 @@
 
 	</div>
 
-	<div class="core">
+	<div class="core" :class="[loadCounter > 0 ? 'loading' : '']">
 		<router-view></router-view>
 	</div>
 
@@ -72,7 +72,7 @@
 <!-- View templates -->
 <template id="home-template">
 
-	<div id="home" :class="[loading ? 'loading' : '']">
+	<div id="home" >
 		<!-- Theme radios -->
 		<div class="theme-selection">
 			<p class="theme-intro">What would like to lunch about today?</p>
@@ -239,20 +239,18 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUD_84n9vBr5CM0RGokCgft6KYqY0OwHs&callback=globalMapInit"
 		async defer></script>
 
-
 <!-- Ours -->
 <script type='text/javascript' src="js/utils.js"></script>
+<script type='text/javascript' src="js/bus.js"></script>
 <script type='text/javascript' src="js/jAntispam.js"></script>
-<!-- Components, then main -->
-<script type="text/javascript">
-    // Create bus to manage events between components
-    var bus = new Vue({});
-</script>
+<!-- Components -->
 <script type='text/javascript' src="services/signupService.js"></script>
+<script type='text/javascript' src="services/loaderService.js"></script>
 <script type='text/javascript' src="components/home.js"></script>
 <script type='text/javascript' src="components/match.js"></script>
 <script type='text/javascript' src="components/map.js"></script>
 <script type='text/javascript' src="components/resoicon.js"></script>
+<!-- Main -->
 <script type='text/javascript' src="js/main.js"></script>
 
 </body>

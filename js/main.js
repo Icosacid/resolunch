@@ -35,14 +35,15 @@ document.addEventListener('DOMContentLoaded', function() {
         data: function() {
             return {
                 isOpen: false,
-                mainHue: 0
+                mainHue: 0,
+                loadCounter: 0
             }
         },
         created: function() {
             var self = this;
-            /*bus.$on('mainHue', function(h) {
-                self.mainHue = h;
-            });*/
+            bus.$on('loadCounter', function(value) {
+                self.loadCounter = value;
+            });
         }
     });
 
