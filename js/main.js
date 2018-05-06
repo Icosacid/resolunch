@@ -41,6 +41,8 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         created: function() {
             var self = this;
+
+            // Loader service binding
             bus.$on('loadCounter', function(value) {
                 self.loadCounter = value;
             });

@@ -3,8 +3,9 @@ $.ajaxSetup({
     beforeSend: function() {
         loaderService.incrementLoader();
     },
-    complete: function() {
+    complete: function(jqXHR, textStatus) {
         loaderService.decrementLoader();
+        console.log('Complete with data', jqXHR, textStatus);
     }
 });
 

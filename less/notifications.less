@@ -1,0 +1,29 @@
+.notifications {
+	position: fixed;
+	top: 0;
+	right: 0;
+
+	.notification {
+		margin: 20px 10px;
+		padding: 15px;
+		box-shadow: rgba(0, 0, 0, 0.25) 0 2px 5px 0;
+		width: 300px;
+		border-radius: @border-radius;
+		.pointer();
+
+		&.success {
+			background: @green;
+		}
+		&.warning {
+			background: @yellorange;
+		}
+		&.error {
+			background: @red;
+		}
+
+		p {
+			color: white;
+			margin: 0;
+		}
+	}
+}

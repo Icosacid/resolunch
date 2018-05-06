@@ -59,14 +59,19 @@
 
 	</div>
 
+	<!-- Core -->
 	<div class="core" :class="[loadCounter > 0 ? 'loading' : '']">
 		<router-view></router-view>
 	</div>
 
+	<!-- Phootarrh -->
 	<div class="footer">
 		<p class="click-and-hue">Resolunch</p>
 		<p class="version">@2018</p>
 	</div>
+
+	<!-- Notifications (outta DOM) -->
+	<notifications></notifications>
 </div>
 
 <!-- View templates -->
@@ -221,6 +226,14 @@
 	</div>
 </template>
 
+<template id="notifications-template">
+	<div class="notifications">
+		<div class="notification" :class="n.type" v-for="n in notifications" v-on:click="dismiss(n)">
+			<p>{{ n.message }}</p>
+		</div>
+	</div>
+</template>
+
 <!-- IE fallback -->
 <div id="ie-fallback">
 	<img width="150" height="150" src='img/website/triangorot.svg' />
@@ -246,9 +259,11 @@
 <!-- Components -->
 <script type='text/javascript' src="services/signupService.js"></script>
 <script type='text/javascript' src="services/loaderService.js"></script>
+<script type='text/javascript' src="services/notificationService.js"></script>
 <script type='text/javascript' src="components/home.js"></script>
 <script type='text/javascript' src="components/match.js"></script>
 <script type='text/javascript' src="components/map.js"></script>
+<script type='text/javascript' src="components/notifications.js"></script>
 <script type='text/javascript' src="components/resoicon.js"></script>
 <!-- Main -->
 <script type='text/javascript' src="js/main.js"></script>
