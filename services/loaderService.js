@@ -1,11 +1,19 @@
 // Add extra actions before and after all ajax calls
 $.ajaxSetup({
+    timeout: config.ajaxTimeout,
     beforeSend: function() {
         loaderService.incrementLoader();
     },
+    error: function() {
+        notificationService.error('Une erreur est survenue, veuillez réessayer ultérieurement.');
+    },
     complete: function(jqXHR, textStatus) {
         loaderService.decrementLoader();
-        console.log('Complete with data', jqXHR, textStatus);
+    },
+    statusCode: {
+        404: function() {
+            notificationService.error('La page demandée n\'existe pas');
+        }
     }
 });
 

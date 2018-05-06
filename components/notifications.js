@@ -29,7 +29,7 @@ Vue.component('notifications', {
             // Kill this notification in a little while, if not already click-killed
             setTimeout(function() {
                 self.dismiss(notif);
-            }, 10000);
+            }, config.notificationsTimeout);
         });
     }
 
